@@ -9,7 +9,7 @@
     <meta property="og:description" content="This is how Arla Foods make biofuel" />
     <meta property="og:image" content="https://needrent.dk/biofuel/assets/how_biofuel_is_made.jpg" />
     <title>How is Biofuel made</title>
-    <!--link rel="stylesheet" href="style.css"-->
+    <link rel="stylesheet" href="style.css">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
@@ -255,19 +255,29 @@
             <a-cylinder position="1.937 1 2.460" height="1" radius="0.01"></a-cylinder>
             <a-cylinder position="3.482 1.000 2.460" height="1" radius="0.01"></a-cylinder>
         </a-entity>
-        <!--div id="model">
+        <div id="model">
             <div id="info">
               <div id="close"></div>
               <p>This is a 3D experience.</p>
               <p class="desktop">Use your mouse to look around and use the arrow keys or WASD to move around in the scene.</p>
               <p class="mobile">Use your finger to look around the scene.</p>
             </div>
-          </div--> 
-          <!--script>
+          </div>
+          <div id="interface" class="intFaceHide">
+              <a href="#">Back to website</a>
+          </div> 
+          <script>
             document.querySelector("#info").addEventListener("click", () => {
-                document.querySelector("#model").classList.add("hide");
+                const model = document.querySelector("#model");
+                const interface = document.querySelector("#interface");
+                model.classList.add("hide");
+
+                model.addEventListener("animationend", e => {
+                    interface.classList.remove("intFaceHide");
+                    model.removeEventListener("animationend", e);
+                })
             });
-          </script-->
+          </script>
       </a-scene>
 </body>
 </html>
