@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="https://needrent.dk/biofuel/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How is Biofuel made" />
+    <meta property="og:description" content="This is how Arla Foods make biofuel" />
+    <meta property="og:image" content="https://needrent.dk/biofuel/assets/how_biofuel_is_made.jpg" />
+    <title>How is Biofuel made</title>
+    <!--link rel="stylesheet" href="style.css"-->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+</head>
+<body>
+    <a-scene background="color: cyan" environment="preset: forest; groundTexture: walkernoise" vr-mode-ui="enabled: false"> 
+            <!--
+        Texture for wood: https://3dtextures.me/2019/09/20/wood-021/
+    -->
+    <a-assets>
+        <a-asset-item id="cow" src="assets/cow.obj"></a-asset-item>
+        <a-asset-item id="cowRig" src="assets/cow_rigged.gltf"></a-asset-item>
+         
+        <!--Textures-->
+        <img id="cowPattern" src="assets/cowPattern.jpg">
+        <img id="wall" src="assets/metal_sphere_sides_noBolts.jpg">
+        <img id="wallNormal" src="assets/metal_sphere_sides_noBolts_normal.png">
+
+        <img id="woodNormal" src="assets/Wood_015_normal.jpg">
+        
+        <img id="truckMetal" src="assets/Metal_Painted_001_baseColor.jpg">
+        <img id="truckNormal" src="assets/Metal_Painted_001_normal.jpg">
+
+        <img id="door01" src="assets/door001.jpg">
+        <img id="door02" src="assets/door002.jpg">
+        <img id="doorNormal" src="assets/doorNormal.png">
+
+        <img id="brick" src="assets/Brick_Wall_014_COLOR.jpg">
+        <img id="brickNormal" src="assets/Brick_Wall_014_NORM.jpg">
+        <img id="brickRough" src="assets/Brick_Wall_014_ROUGH.jpg">
+
+        <!--Posters for store-->
+        <img id="poster001" src="assets/poster001.jpg">
+        <img id="poster002" src="assets/poster002.jpg">
+        <img id="poster003" src="assets/poster003.jpg">
+
+        <!--Story-->
+        <img id="story001" src="assets/story001.png">
+        <img id="story002" src="assets/story002.png">
+        <img id="story003" src="assets/story003.png">
+        <img id="story004" src="assets/story004.png">
+
+        <!--audio id="soundCows" src="assets/testsound.mp3"></audio>
+        <audio id="soundFactory" src="assets/testsound.mp3"></audio>
+        <audio id="soundTruck" src="assets/testsound.mp3"></audio>
+        <audio id="soundStores" src="assets/testsound.mp3"></audio-->
+    </a-assets>
+        <!--Story-->
+        <a-image src="#story001"
+                 position="-1.85 0.626 -0.417"
+                 rotation="-30 0 0" 
+                 scale="0.6 0.6 0.6"
+                 width="1.920"
+                 height="1.08">
+        </a-image>
+        <a-image src="#story002"
+                 position="-0.194 0.626 1.305"
+                 rotation="-30 -85.830 0" 
+                 scale="0.6 0.6 0.6"
+                 width="1.920"
+                 height="1.08">
+        </a-image>
+        <a-image src="#story003"
+                 position="-1.198 0.626 3.018"
+                 rotation="-30 204.970 0" 
+                 scale="0.6 0.6 0.6"
+                 width="1.920"
+                 height="1.08">
+        </a-image>
+        <a-image src="#story004"
+                 position="-3.437 0.626 1.021"
+                 rotation="-30 80.950 0" 
+                 scale="0.6 0.6 0.6"
+                 width="1.920"
+                 height="1.08">
+        </a-image>
+        <!--Light for store door-->
+        <a-entity light="type: point; distance: 9.380   ; color: #fceec5;" position="-7.527 2.896 -2.324"></a-entity>
+        <!--Player-->
+        <a-camera position="-1.879 1.6 1.330">
+
+            <!--a-entity cursor="fuse: true; fuseTimeout: 1500" position="0 0 -1"
+                      geometry="primitive: sphere; radius: 0.005"
+                      material="color: white; shader: flat; opacity: 0.5">
+            </a-entity-->
+        </a-camera>
+        <!--Events-->
+        <!--a-box id="cowBtn" position="1.829 1.600 -3.025" 
+                           rotation="0 -34.080 0" 
+                           height=".4" width=".25" depth="0.1"
+                           mixin="mixBlue"
+                           event-set__enter="_event: mouseenter; material.color: #FF4444"
+                           event-set__click="_event: click; material.color: black"
+                           event-set__leave="_event: mouseleave; material.color: blue"
+                           sound="src: #soundCows; on: click">
+        </a-box-->
+        <a-entity class="farm" position="0.712 0 -4.112">
+            <!--Cow-->
+            <a-gltf-model src="#cowRig" rotation="0 180 0" material="color: #f2b477; src: #cowPattern; repeat: 0.9 0.9" scale="2 2 2" obj-model="" position="-0.973 0 0" animation-mixer="clip: ArmatureAction"></a-gltf-model>
+            <a-obj-model src="#cow" rotation="0 -70 0" scale="0.002 0.002 0.002" material="color: #f2b477" obj-model="" position="-3.867 0 -0.289"></a-obj-model>
+            <a-obj-model src="#cow" rotation="0 -30.150 0" scale="0.002 0.002 0.002" material="color: #f2b477; src: #cowPattern; repeat: 0.9 0.9" obj-model="" position="0.207 0 -1.929"></a-obj-model>
+            <a-entity class="fence" position="-1.50 0.5 1.190">
+                <!--Fence post-->
+                <a-box position="0 0 0" height="1" width="0.2" depth="0.2" color="#ffdc9b" material="normal-map: #woodNormal"></a-box>
+                    <!--Fence connecters-->
+                    <a-cylinder position="1.03076 0.24646 0.092" rotation="0 0 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                    <a-cylinder position="1.03076 -0.23179 0.092" rotation="0 0 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                <a-box position="2 0 0" height="1" width="0.2" depth="0.2" color="#ffdc9b" material="normal-map: #woodNormal"></a-box>
+                    <a-cylinder position="-1.006 0.24646 0.092" rotation="0 0 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                    <a-cylinder position="-1.006 -0.23179 0.092" rotation="0 0 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                <a-box position="-2 0 0" height="1" width="0.2" depth="0.2" color="#ffdc9b" material="normal-map: #woodNormal"></a-box>
+                    <a-cylinder position="-2.75837 0.35084 -0.54131" rotation="0 -43.08 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                    <a-cylinder position="-2.75837 -0.124 -0.54131" rotation="0 -43.08 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                <a-box position="-3.34346 0 -1.24224" height="1" width="0.2" depth="0.2" color="#ffdc9b" material="normal-map: #woodNormal"></a-box>
+                    <a-cylinder position="-3.44769 0.24646 -2.25845" rotation="0 90 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                    <a-cylinder position="-3.44769 -0.23179 -2.25845" rotation="0 90 90" geometry="height: 2; radius: 0.05" color="#ffdc9b" material="normal-map: #woodNormal"></a-cylinder>
+                <a-box position="-3.34346 0 -3.27164" height="1" width="0.2" depth="0.2" color="#ffdc9b" material="normal-map: #woodNormal"></a-box>
+            </a-entity>
+
+        </a-entity>
+        <a-entity class="refinery" position="3.651 2.500 -3.409" rotation="0 -57.560 0"> 
+            <!--Manure in-->
+            <a-cone position="0 -2.254 0" material="color: gray" geometry="height: 0.5; radiusBottom: 0.19; radiusTop: 0.72"></a-cone>
+            <a-box position="0.879 -2.305 0" material="color: gray" geometry="depth: 0.55; height: 0.39; width: 1.85"></a-box>
+            <!--Manure container-->
+            <a-entity position="4.41804 -1.82633 0" material="src: #wall; repeat: 18 1; color: gray; normal-map: #wallNormal; normal-texture-repeat: 18 1; normal-scale: 1 -1" geometry="primitive: cylinder; height: 1.33; radius: 3.39"></a-entity>
+
+            <!--pipes-->
+            <a-entity position="7.13968 0.58168 1.07689" material="color: gray" geometry="primitive: cylinder; height: 4.71; radius: 0.12"></a-entity>
+            <a-entity position="7.13968 2.94232 1.07689" material="color: gray" geometry="primitive: sphere; radius: 0.12"></a-entity>
+            
+            <!--Pump base-->
+            <a-entity position="7.02059 -0.73777 1.07689" material="color: gray" geometry="primitive: cylinder; height: 1.04; radius: 0.29"></a-entity>
+            <a-entity position="6.77785 -0.92762 1.06495" material="color: black" geometry="primitive: cylinder; height: 0.42; radius: 0.11" 
+            animation="property: position; from: 6.77785 -0.92762 1.06495; to: 6.77785 -0.475 1.06495 dur: 2000; easing: easeInOutCirc; loop: true; dir: alternate"></a-entity>
+
+            <!--Pump spill out container-->
+            <a-entity position="9.02357 -1.25 -2.61222" material="color: gray" geometry="primitive: sphere; radius: 1.81"></a-entity>
+            <a-entity position="9.02357 -1.25 -2.61222" material="color: gray; src: #wall; repeat: 12 2; normal-map: #wallNormal; normal-texture-repeat: 12 2; normal-scale: 1 -1" geometry="primitive: cylinder; height: 2.5; radius: 1.81"></a-entity>
+            <!--Pipe for spill out container-->
+            <a-entity position="7.85379 0.4115 -0.54778" material="color: gray" geometry="primitive: cylinder; height: 3.85; radius: 0.08" rotation="90 -29.25 0"></a-entity>
+            <a-entity position="6.9151 -0.14604 1.12336" material="color: gray" geometry="primitive: cylinder; height: 1.11; radius: 0.08" rotation=""></a-entity>
+            <a-entity position="6.9151 0.4091 1.12336" material="color: gray" geometry="primitive: sphere; radius: 0.08" rotation=""></a-entity>
+
+
+            <!--top pipe-->
+            <a-entity position="8.0716 2.93494 1.42111" material="color: gray" geometry="primitive: cylinder; height: 2; radius: 0.12" rotation="90 70 0"></a-entity>
+            <!--pipes-->
+            <a-entity position="9.01113 1.92168 1.76055" material="color: gray" geometry="primitive: cylinder; height: 2.09; radius: 0.12"></a-entity>
+            <a-entity position="9.01113 2.94232 1.76055" material="color: gray" geometry="primitive: sphere; radius: 0.12"></a-entity>
+
+            <!--Big container-->
+            <a-entity position="9.43765 0 1.75916" material="color: gray; src: #wall; repeat: 12 5; normal-map: #wallNormal; normal-texture-repeat: 12 5; normal-scale: 1 -1" geometry="primitive: cylinder; height: 5; radius: 1.81"></a-entity>
+        </a-entity>
+        <a-entity class="truck" position="0.064 0 8.088" rotation="0 10.840 0">
+            <!--Wheels tires-->
+            <a-torus color="black" roughness="1" position="2 0.680 0.755" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+            <a-torus color="black" roughness="1" position="2 0.680 -1.5" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+            <a-torus color="black" roughness="1" position="-0.641 0.680 -1.5" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+            <a-torus color="black" roughness="1" position="-0.641 0.680 0.755" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+
+            <!--Wheels middel-->
+            <a-cylinder material="normalMap: #truckNormal; color: gray" rotation="90 0 0" position="2 0.707 0.755" height="0.42" radius="0.48"></a-cylinder>
+            <a-cylinder material="normalMap: #truckNormal; color: gray" rotation="90 0 0" position="2 0.707 -1.5" height="0.42" radius="0.48"></a-cylinder>
+            <a-cylinder material="normalMap: #truckNormal; color: gray" rotation="90 0 0" position="-0.672 0.707 -1.5" height="0.42" radius="0.48"></a-cylinder>
+            <a-cylinder material="normalMap: #truckNormal; color: gray" rotation="90 0 0" position="-0.641 0.707 0.755" height="0.42" radius="0.48"></a-cylinder>
+
+            <a-entity class="truck_motor" animation="property: position; to: 0 0.05 0; dur: 50; easing: linear; loop: true; dir: alternate">
+                <!--truck deck-->
+                <a-box material="normalMap: #truckNormal; color: white; repeat: 0.2 5.5" height="0.2" width="5.5" depth="2.5" position="0 0.9 -0.357"></a-box>
+                <!--truck house-->
+                <a-box material="normalMap: #truckNormal; color: white; repeat: 1.3 2.72" height="1.3" width="2.720" depth="2.5" position="1.5 1.55 -0.357"></a-box>
+                <a-box material="normalMap: #truckNormal; color: white; repeat: 0.8 1.91" height="0.8" width="1.910" depth="2.5" position="1.095 2.599 -0.357"></a-box>
+                <a-box color="cyan" height="1.3" width="2" depth="2.170" position="1.661 1.913 -0.357" rotation="0 0 45"></a-box>
+            </a-entity> 
+
+            <a-entity class="hanger" position="-8.155 0 -2.413" rotation="0 -19.140 0">
+                <!--Wheels tires-->
+                <a-torus color="black" roughness="1" position="0.703 0.680 0.755" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+                <a-torus color="black" roughness="1" position="0.703 0.680 -1.5" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+                <a-torus color="black" roughness="1" position="-0.641 0.680 -1.5" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+                <a-torus color="black" roughness="1" position="-0.641 0.680 0.755" rotation="0 0 0" radius="0.45" radius-tubular="0.1" height="0.240"></a-torus>
+
+                <!--Wheels middel-->
+                <a-cylinder color="gray" rotation="90 0 0" position="0.687 0.707 0.755" height="0.42" radius="0.48"></a-cylinder>
+                <a-cylinder color="gray" rotation="90 0 0" position="0.687 0.707 -1.5" height="0.42" radius="0.48"></a-cylinder>
+                <a-cylinder color="gray" rotation="90 0 0" position="-0.672 0.707 -1.5" height="0.42" radius="0.48"></a-cylinder>
+                <a-cylinder color="gray" rotation="90 0 0" position="-0.641 0.707 0.755" height="0.42" radius="0.48"></a-cylinder>
+
+                <!--Hanger deck-->
+                <a-box material="normalMap: #truckNormal; color: white; repeat: 0.2 5.5" height="0.2" width="6.540" depth="2.5" position="1.987 0.9 -0.357"></a-box>
+                <!--Truck Milk container-->
+                <a-cylinder rotation="0 0 90" position="3.226 2.350 -0.308" height="8.87" radius="1.340"></a-cylinder>
+            </a-entity>
+
+
+
+        </a-entity>
+        <a-entity class="store" position="-9.809 0 -1.059" rotation="0 70.000 0">
+            <!--Posters-->
+            <a-image src="#poster001" scale="0.900 1.250 1" position="-2.362 2.013 1.523"></a-image>
+            <a-image src="#poster002" scale="0.900 1.250 1" position="-1.444 2.013 1.517"></a-image>
+            <a-image src="#poster003" scale="0.900 1.250 1" position="-0.528 2.013 1.512"></a-image>
+            <!--Top store-->
+            <a-box material="src: #brick; normalMap: #brickNormal; roughnessMap: #brickRough; normal-texture-repeat: 4 2.5; repeat: 4 2.5; roughness-texture-repeat: 4 2.5; roughness: 1" depth="3" width="4" height="2.5" position="-1.500 1.750 0"></a-box>
+            <a-box material="src: #brick; normalMap: #brickNormal; roughnessMap: #brickRough; normal-texture-repeat: 3 2.5; repeat: 3 2.5; roughness-texture-repeat: 3 2.5; roughness: 1" depth="2" width="3" height="2.5" position="2 1.750 -0.5"></a-box>
+            <a-box material="src: #brick; normalMap: #brickNormal; roughnessMap: #brickRough; normal-texture-repeat: 1 2.5; repeat: 1 2.5; roughness-texture-repeat: 1 2.5; roughness: 1" depth="1" width="0.250" height="2.5" position="3.370 1.750 1"></a-box>
+            
+            <!--Door-->
+            <a-box position="1.389 1.500 0.483" height="2" width="1" depth="0.05" material="src: #door01; repeat: 1 1; normalMap: #doorNormal; normal-scale: -1 -1"></a-box>
+            <a-box position="2.389 1.500 0.483" height="2" width="1" depth="0.05" material="src: #door02; repeat: 1 1; normalMap: #doorNormal; normal-scale: -1 -1"></a-box>
+
+            <!--Roof-->
+            <a-triangle position="0.5 3.6 1.5" geometry="vertexB: -4 -0.5 0; vertexC: 0 -0.5 0"></a-triangle>
+            <a-triangle position="0.5 3.6 1.5" rotation="180 180 0" geometry="vertexB: -3 0.5 0; vertexC: 0 -0.5 0"></a-triangle>
+            
+            <a-triangle position="0.5 3.6 -1.5" rotation="0 180 0" geometry="vertexB: -3 -0.5 0; vertexC: 0 -0.5 0"></a-triangle>
+            <a-triangle position="0.5 3.6 -1.5" rotation="180 0 0" geometry="vertexB: -4 0.5 0; vertexC: 0 -0.5 0"></a-triangle>
+
+            <a-plane width="3" height="3.2" position="2 3.6 0" rotation="-71.350 90 0"></a-plane>
+            <a-plane width="3" height="4.2" position="-1.527 3.593 0" rotation="-103.730 90 0"></a-plane>
+
+            <a-box material="color: gray" depth="3" width="7" height="0.1" position="0 3.05 0"></a-box>
+
+            <!--foundation-->
+            <a-box material="color: gray" depth="3" width="7" height="0.5" position="0 0.25 0"></a-box>
+            <a-box material="color: gray" depth="1" width="3" height="0.5" position="2 0.25 2"></a-box>
+            <!--Ramp-->
+            <a-box material="color: gray" depth="1" width="3" height="0.5" rotation="0 0 10" position="-0.928 -0.008 2"></a-box>
+            <!--Raling top-->
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="-0.835 1.236 2.460" rotation="0 0 10" height="0.1" width="2.85" depth="0.05"></a-box>
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="-0.835 0.7 2.460" rotation="0 0 10" height="0.1" width="2.85" depth="0.05"></a-box>
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="2.025 1.482 2.460" rotation="0 0 0" height="0.1" width="2.95" depth="0.05"></a-box>
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="2.025 0.945 2.460" rotation="0 0 0" height="0.1" width="2.95" depth="0.05"></a-box>
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="3.482 1.482 1.985" rotation="0 90 0" height="0.1" width="1" depth="0.05"></a-box>
+            <a-box material="normal-map: #woodNormal; normal-scale: 0.060 1.110 ; color: brown" position="3.482 0.945 1.985" rotation="0 90 0" height="0.1" width="1" depth="0.05"></a-box>
+
+            <!--Raling bottom-->
+            <a-cylinder position="-2.200 0.500 2.460" height="1" radius="0.01"></a-cylinder>
+            <a-cylinder position="-0.810 0.755 2.460" height="1" radius="0.01"></a-cylinder>
+            <a-cylinder position="0.523 1 2.460" height="1" radius="0.01"></a-cylinder>
+            <a-cylinder position="1.937 1 2.460" height="1" radius="0.01"></a-cylinder>
+            <a-cylinder position="3.482 1.000 2.460" height="1" radius="0.01"></a-cylinder>
+        </a-entity>
+        <!--div id="model">
+            <div id="info">
+              <div id="close"></div>
+              <p>This is a 3D experience.</p>
+              <p class="desktop">Use your mouse to look around and use the arrow keys or WASD to move around in the scene.</p>
+              <p class="mobile">Use your finger to look around the scene.</p>
+            </div>
+          </div--> 
+          <!--script>
+            document.querySelector("#info").addEventListener("click", () => {
+                document.querySelector("#model").classList.add("hide");
+            });
+          </script-->
+      </a-scene>
+</body>
+</html>
