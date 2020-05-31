@@ -40,12 +40,19 @@
   }
   #info{
     position: relative;
-    width:50%;
+    width: 80%;
+    max-width: 350px;
     margin: 45vh auto 0 auto;
     background: var(--green);
-    padding: 1%;
+    padding: 2.5%;
     color: white;
     font-family: lato;
+  }
+  #info h3{
+    padding: 1rem 0 0 0;
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 0rem;
   }
   #close {
     width: 1rem;
@@ -72,21 +79,28 @@
     animation: hide 2s forwards cubic-bezier(.31,-0.4,.15,1.01);
   }
   .intFaceHide{
-      transform: translateY(50%);
+      display: none;
   }
-  .desktop{
+  /*.desktop{
     display: none;
-  }
+  }*/
   @keyframes hide{
-    99%{
-      transform: translateX(60%);
-    }
     100%{
+      transform: translateX(60%);
+      opacity: 0;
+    }
+    /*100%{
       opacity: 0;
       pointer-events: none;
+    }*/
+  }
+  /*@media (min-width: 768px){
+    #info{
+        position: relative;
+        width:50%;
     }
   }
-  @media (min-width: 1024px){
+  @media (min-width: 1280px){
     .mobile{
       display: none;
     }
@@ -97,5 +111,5 @@
         position: relative;
         width:25%;
     }
-  }
+  }*/
   

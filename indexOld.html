@@ -53,10 +53,6 @@
         <img id="story003" src="assets/story003.png">
         <img id="story004" src="assets/story004.png">
 
-        <!--audio id="soundCows" src="assets/testsound.mp3"></audio>
-        <audio id="soundFactory" src="assets/testsound.mp3"></audio>
-        <audio id="soundTruck" src="assets/testsound.mp3"></audio>
-        <audio id="soundStores" src="assets/testsound.mp3"></audio-->
     </a-assets>
         <!--Story-->
         <a-image src="#story001"
@@ -91,22 +87,7 @@
         <a-entity light="type: point; distance: 9.380   ; color: #fceec5;" position="-7.527 2.896 -2.324"></a-entity>
         <!--Player-->
         <a-camera position="-1.879 1.6 1.330">
-
-            <!--a-entity cursor="fuse: true; fuseTimeout: 1500" position="0 0 -1"
-                      geometry="primitive: sphere; radius: 0.005"
-                      material="color: white; shader: flat; opacity: 0.5">
-            </a-entity-->
         </a-camera>
-        <!--Events-->
-        <!--a-box id="cowBtn" position="1.829 1.600 -3.025" 
-                           rotation="0 -34.080 0" 
-                           height=".4" width=".25" depth="0.1"
-                           mixin="mixBlue"
-                           event-set__enter="_event: mouseenter; material.color: #FF4444"
-                           event-set__click="_event: click; material.color: black"
-                           event-set__leave="_event: mouseleave; material.color: blue"
-                           sound="src: #soundCows; on: click">
-        </a-box-->
         <a-entity class="farm" position="0.712 0 -4.112">
             <!--Cow-->
             <a-gltf-model src="#cowRig" rotation="0 180 0" material="color: #f2b477; src: #cowPattern; repeat: 0.9 0.9" scale="2 2 2" obj-model="" position="-0.973 0 0" animation-mixer="clip: ArmatureAction"></a-gltf-model>
